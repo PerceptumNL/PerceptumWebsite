@@ -5,6 +5,7 @@ from frontend.models import *
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {
+        "members": Member.objects,
         "projects": Project.objects,
         "project_categories": ProjectCategory.objects
     })
