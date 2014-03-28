@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<section class="portfolio-item-details">
+    <div class="row-fluid">
+        <div class="span8">
+			<img src="{{ item.large_img }}">
+        </div>
+        <div class="span4">
+            <div class="close-portfolio">
+                <span>&#10006;</span>
+                <div class="clearfix"></div>
+            </div>
+			<h5>{{ item.title }}</h5>
+            <article class="smallFontBy08">
+                <p>{{ item.description | safe }}</p>
+            </article>
+			{% if item.website %}
+            <section class="website">
+                <h5>Visit site</h5>
+				<a href="{{ item.website }}" class="smallFontBy08">
+					{{ item.website }}
+				</a>
+            </section>
+            {% endif %}
+			{% if item.repository %}
+            <section class="website">
+                <h5>Visit github</h5>
+				<a href="{{ item.repository }}" class="smallFontBy08">
+					{{ item.repository }}
+				</a>
+            </section>
+            {% endif %}
+            <div class="submenu">
+                <ul>
+					{% for category in item.categories.all %}
+                    <li>
+						<span>{{ category.title }}</span>
+                    </li>
+					{% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
