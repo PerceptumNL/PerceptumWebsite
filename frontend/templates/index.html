@@ -254,18 +254,14 @@
                         <li>
                             <a href="#" class="plugin-filter active" data-filter="all">All</a>
                         </li>
+                        {% for category in portfolio_categories.all %}
                         <li>
-                            <a href="#" class="plugin-filter" data-filter="typography">Typography</a>
+                            <a href="#" class="plugin-filter"
+                                data-filter="portcat{{ category.pk }}">
+                                {{ category.title }}
+                            </a>
                         </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="illustration">Illustration</a>
-                        </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="branding">Branding</a>
-                        </li>
-                        <li>
-                            <a href="#" class="plugin-filter" data-filter="photography">Photography</a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </nav>
             </header>
@@ -279,86 +275,24 @@
                         portfolio-items: Customise portfolio items for hover effect.
                 -->
                 <ul class="thumbnails plugin-filter-elements portfolio-items">
-                    <li class="span4 mix illustration branding">
-                        <a href="#pages/portfolio/project_1.html" data-destination="portfolio-items" data-insert="before">
+                    {% for item in portfolio_items.all %}
+                    <li class="span4 mix{% for c in item.categories.all %} portcat{{ c.pk }}{% endfor %}">
+                    <a href="#portfolio/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
                             <!-- Portfolio image -->
-                            <img src="http://placehold.it/390x300" alt="Treble">
+                            <img src="{{ item.small_img }}" alt="{{ item.title }}">
                             
                             <!-- Portfolio name, activated on hover -->
                             <div class="portfolio-overlay">
-                                <h4>Vita Worldwide</h4>
+                                <h4>{{ item.title }}</h4>
                             </div>
                         </a>
                     </li>
-                    <li class="span4 mix branding typography illustration">
-                        <a href="#pages/portfolio/project_2.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>Kokong Magazine</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix photography illustration">
-                        <a href="#pages/portfolio/project_3.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>Escape The Grid 2</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix photography">
-                        <a href="#pages/portfolio/project_4.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>Avatar</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix photography typography branding">
-                        <a href="#pages/portfolio/project_5.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>A Brighter Horizon</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix photography">
-                        <a href="#pages/portfolio/project_6.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>The Travelers</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix illustration branding typography">
-                        <a href="#pages/portfolio/project_7.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>Tron 3</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix photography illustration">
-                        <a href="#pages/portfolio/project_8.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>Vimeo Staff Picke - Rio</h4>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="span4 mix illustration branding">
-                        <a href="#pages/portfolio/project_9.html" data-destination="portfolio-items" data-insert="before">
-                            <img src="http://placehold.it/390x300" alt="Treble">
-                            <div class="portfolio-overlay">
-                                <h4>Adobe Family. 1882</h4>
-                            </div>
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </article>
             <!-- End Article -->
             
-            <!-- Footer -->
+            <!-- Footer Disabled
             <footer>
                 <div class="show-more-cube">
                      <a href="#pages/portfolio/readmore.html" data-destination="plugin-filter-elements" data-insert="appendTo" data-action="remove">
@@ -366,7 +300,7 @@
                     </a>
                 </div>
             </footer>
-            <!-- End footer -->
+            End footer -->
         </div>
     </div>
     <!-- END PAGE | WORK -->
