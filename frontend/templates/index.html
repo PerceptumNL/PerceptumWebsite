@@ -256,7 +256,7 @@
                 -->
                 <ul class="thumbnails plugin-filter-elements portfolio-items">
                     {% for item in projects.all %}
-                    <li class="span4 mix{% for c in item.categories.all %}projcat{{ c.pk }}{% endfor %}{% for m in item.members.all %} projmem{{ m.pk }}{% endfor %}">
+                    <li class="span4 mix{% for c in item.categories.all %} projcat{{ c.pk }}{% endfor %}{% for m in item.members.all %} projmem{{ m.pk }}{% endfor %}">
                     <a href="#project/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
                             <!-- Portfolio image -->
                             <img src="{{ item.small_img }}" alt="{{ item.title }}">
