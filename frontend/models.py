@@ -12,6 +12,9 @@ class Member(models.Model):
     pinterest = models.URLField(max_length=255, blank=True)
     projects = models.ManyToManyField('Project', blank=True)
 
+    def __unicode__(self):
+        return self.name
+
 # Create your models here.
 class Project(models.Model):
     title = models.CharField(max_length=255)
