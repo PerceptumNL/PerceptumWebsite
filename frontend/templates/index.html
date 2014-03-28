@@ -254,10 +254,10 @@
                         <li>
                             <a href="#" class="plugin-filter active" data-filter="all">All</a>
                         </li>
-                        {% for category in portfolio_categories.all %}
+                        {% for category in project_categories.all %}
                         <li>
                             <a href="#" class="plugin-filter"
-                                data-filter="portcat{{ category.pk }}">
+                                data-filter="projcat{{ category.pk }}">
                                 {{ category.title }}
                             </a>
                         </li>
@@ -275,9 +275,9 @@
                         portfolio-items: Customise portfolio items for hover effect.
                 -->
                 <ul class="thumbnails plugin-filter-elements portfolio-items">
-                    {% for item in portfolio_items.all %}
-                    <li class="span4 mix{% for c in item.categories.all %} portcat{{ c.pk }}{% endfor %}">
-                    <a href="#portfolio/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
+                    {% for item in projects.all %}
+                    <li class="span4 mix{% for c in item.categories.all %} projcat{{ c.pk }}{% endfor %}">
+                    <a href="#project/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
                             <!-- Portfolio image -->
                             <img src="{{ item.small_img }}" alt="{{ item.title }}">
                             
