@@ -5,8 +5,16 @@ from frontend.models import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html', {
-        "interface": Interface.objects.filter(active=True)[0],
+    interface_id = request.GET.get("interface", None)
+    if interface_id is None:
+        interface = Interface.objects.filter(active=True)[0]
+    else:
+        try:
+            interface = Interface.objects.get(pk=interface_id)
+        except:
+            raise Http404
+    return render(request, interface.template, {
+        "interface": interface,
         "organisation": Organisation.objects.all()[0],
         "members": Member.objects,
         "projects": Project.objects,
