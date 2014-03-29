@@ -178,8 +178,11 @@
                     <li class="span4 center">
                          <div class="item">
                             <!-- Team member image -->
+							{% if member.img %}
 							<img class="img-circle" src="{{ member.img }}" alt="{{ member.name }}">
-                            
+							{% else %}
+							<img class="img-circle"	src="http://placehold.it/280x280" alt="Default image">
+							{% endif %}
                             <!-- Team member details, activated on hover -->
                             <div class="about-overlay img-circle">
                                 <div class="social-icons sicon-white">
