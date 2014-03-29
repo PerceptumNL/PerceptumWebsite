@@ -7,15 +7,29 @@ from frontend.models import *
 def index(request):
     interface_id = request.GET.get("interface", None)
     if interface_id is None:
-        interface = Interface.objects.filter(active=True)[0]
+        try:
+            interface = Interface.objects.filter(active=True)[0]
+        except:
+            raise Http404
     else:
         try:
             interface = Interface.objects.get(pk=interface_id)
         except:
             raise Http404
+    organisation_id = request.GET.get("organisation", None)
+    if organisation_id is None:
+        try:
+            organisation = Organisation.objects.all()[0]
+        except:
+            raise Http404
+    else:
+        try:
+            organisation = Organisation.objects.get(pk=organisation_id)
+        except:
+            raise Http404
     return render(request, interface.template, {
         "interface": interface,
-        "organisation": Organisation.objects.all()[0],
+        "organisation": organisation,
         "members": Member.objects,
         "projects": Project.objects,
         "project_categories": ProjectCategory.objects
