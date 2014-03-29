@@ -10,6 +10,9 @@ class Interface(PolymorphicModel):
     template = models.CharField(max_length=255, editable=False,
             default="index.html")
 
+    def get_absolute_url(self):
+        return "/?interface=%d" % (self.pk,)
+
 class TrebleInterface(Interface):
     show_social = models.BooleanField(
             verbose_name="Show the social networks of the organisation")
