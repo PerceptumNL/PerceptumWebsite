@@ -3,7 +3,8 @@ from organisation.models import *
 
 class OrganisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {'fields': (
+        (None, {'fields': ('active', )}),
+        ('About', {'fields': (
             'name', 'slogan', 'tagline', 'logo', 'description')}),
         ('Contact', {'fields': ('phone', 'address', 'email', 'timezone')}),
         ('Social networks', {'fields': (
