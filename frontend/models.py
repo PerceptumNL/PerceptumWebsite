@@ -10,7 +10,8 @@ class Member(models.Model):
     linkedin = models.URLField(max_length=255, blank=True)
     youtube = models.URLField(max_length=255, blank=True)
     pinterest = models.URLField(max_length=255, blank=True)
-    projects = models.ManyToManyField('Project', blank=True)
+    projects = models.ManyToManyField('Project', blank=True,
+        related_name='members')
 
     def __unicode__(self):
         return self.name
