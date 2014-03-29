@@ -30,9 +30,9 @@ def index(request):
     return render(request, interface.template, {
         "interface": interface,
         "organisation": organisation,
-        "members": Member.objects,
-        "projects": Project.objects,
-        "project_categories": ProjectCategory.objects
+        "members": Member.objects.order_by('?'),
+        "projects": Project.objects.order_by('?'),
+        "project_categories": ProjectCategory.objects.order_by('?')
     })
 
 def project(request, item):
