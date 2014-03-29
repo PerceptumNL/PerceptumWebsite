@@ -154,72 +154,44 @@
             <article>
                 <!-- List of people and description with their contact details which are visable on hover -->
                 <ul class="thumbnails about-items">
+					{% for member in members.all %}
                     <li class="span4 center">
                          <div class="item">
                             <!-- Team member image -->
-                            <img class="img-circle" src="http://placehold.it/280x280" alt="Treble">
+							<img class="img-circle" src="{{ member.img }}" alt="{{ member.name }}">
                             
                             <!-- Team memeber details, activated on hover -->
                             <div class="about-overlay img-circle">
                                 <div class="social-icons sicon-white">
-                                    <a href="#" class="sicon-facebook"><i>Facebook</i></a>
-                                    <a href="#" class="sicon-twitter"><i>Twitter</i></a>
-                                    <a href="#" class="sicon-linkedin"><i>LinkedIn</i></a>
-                                    <a href="#" class="sicon-youtube"><i>Youtube</i></a>
-                                    <a href="#" class="sicon-pinterest"><i>Pinterest</i></a>
+									{% if member.facebook %}
+									<a href="{{ member.facebook }}" class="sicon-facebook"><i>Facebook</i></a>
+									{% endif %}
+									{% if member.twitter %}
+									<a href="{{ member.twitter }}" class="sicon-twitter"><i>Twitter</i></a>
+									{% endif %}
+									{% if member.linkedin %}
+									<a href="{{ member.linkedin }}" class="sicon-linkedin"><i>Linkedin</i></a>
+									{% endif %}
+									{% if member.youtoube %}
+									<a href="{{ member.youtube }}" class="sicon-youtube"><i>Youtube</i></a>
+									{% endif %}
+									{% if member.pinterest %}
+									<a href="{{ member.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
+									{% endif %}
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Team member name and function -->
                         <h5>
-                            Sander Latour<br/>
-                            <small>Networked Society</small>
+							{{ member.name }}<br/>
+							<small>{{ member.tagline }}</small>
                         </h5>
                         
                         <!-- Team member short info -->
-                        <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
+						<p class="smallFontBy08">{{ member.description }}</p>
                     </li>
-                    <li class="span4 center">
-                        <div class="item">
-                            <img class="img-circle" src="http://placehold.it/280x280" alt="Treble">
-                            <div class="about-overlay img-circle">
-                                <div class="social-icons sicon-white">
-                                    <a href="#" class="sicon-facebook"><i>Facebook</i></a>
-                                    <a href="#" class="sicon-twitter"><i>Twitter</i></a>
-                                    <a href="#" class="sicon-linkedin"><i>LinkedIn</i></a>
-                                    <a href="#" class="sicon-youtube"><i>Youtube</i></a>
-                                    <a href="#" class="sicon-pinterest"><i>Pinterest</i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <h5>
-                            Wijnand Baretta<br/>
-                            <small>Entrepreneurial learning</small>
-                        </h5>
-                        <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-                    </li>
-                    <li class="span4 center">
-                        <div class="item">
-                            <img class="img-circle" src="http://placehold.it/280x280" alt="Treble">
-                            <div class="about-overlay img-circle">
-                                <div class="social-icons sicon-white">
-                                    <a href="#" class="sicon-facebook"><i>Facebook</i></a>
-                                    <a href="#" class="sicon-twitter"><i>Twitter</i></a>
-                                    <a href="#" class="sicon-linkedin"><i>LinkedIn</i></a>
-                                    <a href="#" class="sicon-youtube"><i>Youtube</i></a>
-                                    <a href="#" class="sicon-pinterest"><i>Pinterest</i></a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <h5>
-                            Robrecht Jurriaans<br/>
-                            <small>Gameful Design</small>
-                        </h5>
-                        <p class="smallFontBy08">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua,consectetur adipisicing elit.</p>
-                    </li>
+					{% endfor %}
                 </ul>
             </article>
             <!-- End Article -->
@@ -254,10 +226,18 @@
                         <li>
                             <a href="#" class="plugin-filter active" data-filter="all">All</a>
                         </li>
-                        {% for category in portfolio_categories.all %}
+                        {% for member in members.all %}
                         <li>
                             <a href="#" class="plugin-filter"
-                                data-filter="portcat{{ category.pk }}">
+                                data-filter="projmem{{ member.pk }}">
+                                {{ member.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                        {% for category in project_categories.all %}
+                        <li>
+                            <a href="#" class="plugin-filter"
+                                data-filter="projcat{{ category.pk }}">
                                 {{ category.title }}
                             </a>
                         </li>
@@ -275,9 +255,9 @@
                         portfolio-items: Customise portfolio items for hover effect.
                 -->
                 <ul class="thumbnails plugin-filter-elements portfolio-items">
-                    {% for item in portfolio_items.all %}
-                    <li class="span4 mix{% for c in item.categories.all %} portcat{{ c.pk }}{% endfor %}">
-                    <a href="#portfolio/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
+                    {% for item in projects.all %}
+                    <li class="span4 mix{% for c in item.categories.all %} projcat{{ c.pk }}{% endfor %}{% for m in item.members.all %} projmem{{ m.pk }}{% endfor %}">
+                    <a href="#project/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
                             <!-- Portfolio image -->
                             <img src="{{ item.small_img }}" alt="{{ item.title }}">
                             

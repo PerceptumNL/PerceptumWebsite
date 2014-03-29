@@ -1,21 +1,22 @@
 from django.shortcuts import render
 from django.http import Http404
-from frontend.models import *
+from organisation.models import *
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {
-        "portfolio_items": PortfolioItem.objects,
-        "portfolio_categories": PortfolioCategory.objects
+        "members": Member.objects,
+        "projects": Project.objects,
+        "project_categories": ProjectCategory.objects
     })
 
-def portfolio(request, item):
+def project(request, item):
     try:
-        portfolio = PortfolioItem.objects.get(pk=item)
+        project = Project.objects.get(pk=item)
     except:
         raise Http404
     else:
-        return render(request, 'portfolio.html', {"item": portfolio})
+        return render(request, 'project.html', {"item": project})
 
 def page(request, page):
     template = "pages/%s" % (page,)
