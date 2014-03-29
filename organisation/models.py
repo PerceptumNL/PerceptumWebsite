@@ -1,5 +1,24 @@
 from django.db import models
 
+class Organisation(models.Model):
+    name = models.CharField(max_length=255)
+    slogan = models.CharField(max_length=255, blank=True)
+    tagline = models.CharField(max_length=255)
+    logo = models.URLField(max_length=255)
+    description = models.TextField()
+    phone = models.CharField(max_length=255, blank=True)
+    address = models.CharField(max_length=255, blank=True)
+    email = models.EmailField(max_length=255)
+    timezone = models.CharField(max_length=100, blank=True)
+    facebook = models.URLField(max_length=255, blank=True)
+    twitter = models.URLField(max_length=255, blank=True)
+    linkedin = models.URLField(max_length=255, blank=True)
+    youtube = models.URLField(max_length=255, blank=True)
+    pinterest = models.URLField(max_length=255, blank=True)
+
+    def __unicode__(self):
+        return self.name
+
 class Member(models.Model):
     name = models.CharField(max_length=255)
     tagline = models.CharField(max_length=255)
