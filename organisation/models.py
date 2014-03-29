@@ -41,8 +41,8 @@ class Project(models.Model):
     description = models.TextField()
     website = models.URLField(max_length=255, blank=True)
     repository = models.URLField(max_length=255, blank=True)
-    small_img = models.URLField(max_length=255)
-    large_img = models.URLField(max_length=255)
+    small_img = models.URLField(max_length=255, verbose_name="Thumbnail image")
+    large_img = models.URLField(max_length=255, verbose_name="Large image")
     categories = models.ManyToManyField('ProjectCategory', blank=True)
 
     def __unicode__(self):
