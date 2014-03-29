@@ -186,6 +186,9 @@
                             <!-- Team member details, activated on hover -->
                             <div class="about-overlay img-circle">
                                 <div class="social-icons sicon-white">
+									{% if member.email %}
+									<a href="mailto:{{ member.email }}" class="sicon-mail"><i>Email</i></a>
+									{% endif %}
 									{% if member.facebook %}
 									<a href="{{ member.facebook }}" class="sicon-facebook"><i>Facebook</i></a>
 									{% endif %}
