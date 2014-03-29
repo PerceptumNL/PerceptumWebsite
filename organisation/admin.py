@@ -15,7 +15,7 @@ class MemberAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': ('active', )}),
         ('About', {'fields': (
-            'name', 'tagline', 'description', 'img')}),
+            'name', 'tagline', 'description', 'email', 'img')}),
         ('Social networks', {'fields': (
             'facebook', 'twitter', 'linkedin', 'youtube', 'pinterest')})
     )

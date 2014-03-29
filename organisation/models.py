@@ -29,6 +29,7 @@ class Member(models.Model):
     tagline = models.CharField(max_length=255, blank=True)
     description = models.TextField()
     img = models.URLField(max_length=255, blank=True, verbose_name="Image")
+    email = models.EmailField(max_length=255, blank=True)
     facebook = models.URLField(max_length=255, blank=True)
     twitter = models.URLField(max_length=255, blank=True)
     linkedin = models.URLField(max_length=255, blank=True)
