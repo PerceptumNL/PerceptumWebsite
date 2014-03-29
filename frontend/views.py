@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
-from frontend.models import *
+from organisation.models import *
 
 # Create your views here.
 def index(request):

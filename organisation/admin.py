@@ -1,5 +1,5 @@
 from django.contrib import admin
-from frontend.models import *
+from organisation.models import *
 
 # Register your models here.
 admin.site.register(Member)
