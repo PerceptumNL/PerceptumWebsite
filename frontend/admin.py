@@ -14,6 +14,7 @@ class TrebleInterfaceAdmin(PolymorphicChildModelAdmin):
         ('Visuals', {'fields': (
             'scrolldown_visual', 'scrolldown_flipped_visual')}),
         ('Text', {'fields': (
+            'description_title',
             'members_title', 'members_intro',
             'work_title', 'work_intro',
             'contact_title', 'contact_intro')}),
