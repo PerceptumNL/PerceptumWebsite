@@ -10,8 +10,18 @@ class OrganisationAdmin(admin.ModelAdmin):
             'facebook', 'twitter', 'linkedin', 'youtube', 'pinterest')})
     )
 
+class MemberInlineAdmin(admin.TabularInline):
+    model = Member.projects.through
+    extra = 1
+    verbose_name = "Member"
+    verbose_name_plural = "Members"
+
+class ProjectAdmin(admin.ModelAdmin):
+    inlines = (MemberInlineAdmin,)
+    model = Project
+
 # Register your models here.
 admin.site.register(Organisation, OrganisationAdmin)
 admin.site.register(Member)
-admin.site.register(Project)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(ProjectCategory)
