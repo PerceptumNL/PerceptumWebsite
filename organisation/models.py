@@ -1,6 +1,7 @@
 from django.db import models
 
 class Organisation(models.Model):
+    active = models.BooleanField(default=True)
     name = models.CharField(max_length=255)
     slogan = models.CharField(max_length=255, blank=True)
     tagline = models.CharField(max_length=255)
@@ -23,10 +24,11 @@ class Organisation(models.Model):
         return "/?organisation=%d" % (self.pk,)
 
 class Member(models.Model):
+    active = models.BooleanField(default=True)
     name = models.CharField(max_length=255)
-    tagline = models.CharField(max_length=255)
+    tagline = models.CharField(max_length=255, blank=True)
     description = models.TextField()
-    img = models.URLField(max_length=255)
+    img = models.URLField(max_length=255, blank=True, verbose_name="Image")
     facebook = models.URLField(max_length=255, blank=True)
     twitter = models.URLField(max_length=255, blank=True)
     linkedin = models.URLField(max_length=255, blank=True)
@@ -40,6 +42,7 @@ class Member(models.Model):
 
 # Create your models here.
 class Project(models.Model):
+    active = models.BooleanField(default=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
     website = models.URLField(max_length=255, blank=True)
@@ -52,6 +55,7 @@ class Project(models.Model):
         return self.title
 
 class ProjectCategory(models.Model):
+    active = models.BooleanField(default=True)
     title = models.CharField(max_length=255)
 
     def __unicode__(self):

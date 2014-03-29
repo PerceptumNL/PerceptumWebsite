@@ -19,7 +19,7 @@ def index(request):
     organisation_id = request.GET.get("organisation", None)
     if organisation_id is None:
         try:
-            organisation = Organisation.objects.all()[0]
+            organisation = Organisation.objects.filter(active=True)[0]
         except:
             raise Http404
     else:
@@ -30,9 +30,10 @@ def index(request):
     return render(request, interface.template, {
         "interface": interface,
         "organisation": organisation,
-        "members": Member.objects.order_by('?'),
-        "projects": Project.objects.order_by('?'),
-        "project_categories": ProjectCategory.objects.order_by('?')
+        "members": Member.objects.filter(active=True).order_by('?'),
+        "projects": Project.objects.filter(active=True).order_by('?'),
+        "project_categories": ProjectCategory.objects.filter(
+            active=True).order_by('?')
     })
 
 def project(request, item):
