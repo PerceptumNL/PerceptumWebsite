@@ -26,7 +26,7 @@ class Organisation(models.Model):
 class Member(models.Model):
     active = models.BooleanField(default=True)
     name = models.CharField(max_length=255)
-    tagline = models.CharField(max_length=255)
+    tagline = models.CharField(max_length=255, blank=True)
     description = models.TextField()
     img = models.URLField(max_length=255)
     facebook = models.URLField(max_length=255, blank=True)
