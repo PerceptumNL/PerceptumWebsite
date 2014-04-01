@@ -138,6 +138,9 @@
 							{% if organisation.pinterest %}
 							<a href="{{ organisation.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
 							{% endif %}
+							{% if organisation.googleplus %}
+							<a href="{{ organisation.googleplus }}" class="fa fa-google-plus"><i>Google Plus</i></a>
+							{% endif %}
                         </div>
 						{% endif %}
                     </div>
@@ -203,6 +206,9 @@
 									{% endif %}
 									{% if member.pinterest %}
 									<a href="{{ member.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
+									{% endif %}
+									{% if member.googleplus %}
+									<a href="{{ member.googleplus }}" class="fa fa-google-plus"><i>Google Plus</i></a>
 									{% endif %}
                                 </div>
                             </div>
@@ -290,7 +296,7 @@
 					">
                     <a href="#project/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
                             <!-- Portfolio image -->
-                            <img src="{{ item.small_img }}" alt="{{ item.title }}">
+                            <img src="{{ item.small_img }}" alt="{{ item.title }}" style="display: block; margin: 0 auto;">
                             
                             <!-- Portfolio name, activated on hover -->
                             <div class="portfolio-overlay">
