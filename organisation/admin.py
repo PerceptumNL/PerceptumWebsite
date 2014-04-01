@@ -8,7 +8,7 @@ class OrganisationAdmin(admin.ModelAdmin):
             'name', 'slogan', 'tagline', 'logo', 'description')}),
         ('Contact', {'fields': ('phone', 'address', 'email', 'timezone')}),
         ('Social networks', {'fields': (
-            'facebook', 'twitter', 'linkedin', 'youtube', 'pinterest')})
+            'facebook', 'twitter', 'linkedin', 'youtube', 'pinterest', 'googleplus')})
     )
 
 class MemberAdmin(admin.ModelAdmin):
@@ -17,7 +17,7 @@ class MemberAdmin(admin.ModelAdmin):
         ('About', {'fields': (
             'name', 'tagline', 'description', 'email', 'img')}),
         ('Social networks', {'fields': (
-            'facebook', 'twitter', 'linkedin', 'youtube', 'pinterest')})
+            'facebook', 'twitter', 'linkedin', 'youtube', 'pinterest', 'googleplus')})
     )
 
 class MemberInlineAdmin(admin.TabularInline):

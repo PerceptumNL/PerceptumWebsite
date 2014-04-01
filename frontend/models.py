@@ -33,10 +33,16 @@ class TrebleInterface(Interface):
     ganalytics_id = models.CharField(max_length=100,
         verbose_name="Google Analytics ID")
 
-
     def __init__(self, *args, **kwargs):
         kwargs['template'] = "index.html"
         super(TrebleInterface, self).__init__(*args, **kwargs)
 
     def __unicode__(self):
         return "Treble interface"
+
+class BackgroundImage(models.Model):
+    url = models.URLField(max_length=255)
+    interface = models.ForeignKey('Interface')
+    
+    def __unicode__(self):
+        return self.url

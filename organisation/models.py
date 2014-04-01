@@ -16,7 +16,8 @@ class Organisation(models.Model):
     linkedin = models.URLField(max_length=255, blank=True)
     youtube = models.URLField(max_length=255, blank=True)
     pinterest = models.URLField(max_length=255, blank=True)
-
+    googleplus = models.URLField(max_length=255, blank=True)
+    
     def __unicode__(self):
         return self.name
 
@@ -34,6 +35,7 @@ class Member(models.Model):
     twitter = models.URLField(max_length=255, blank=True)
     linkedin = models.URLField(max_length=255, blank=True)
     youtube = models.URLField(max_length=255, blank=True)
+    googleplus = models.URLField(max_length=255, blank=True)
     pinterest = models.URLField(max_length=255, blank=True)
     projects = models.ManyToManyField('Project', blank=True,
         related_name='members')
@@ -64,3 +66,5 @@ class ProjectCategory(models.Model):
 
     class Meta:
         verbose_name_plural = "Project categories"
+
+

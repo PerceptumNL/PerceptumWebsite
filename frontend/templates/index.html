@@ -21,7 +21,8 @@
                                    
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="{% static 'style/bootstrap.theme.css' %}" type="text/css" />
-    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	
     <!-- GOOGLE WEB FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,700,600,300,800' rel='stylesheet' type='text/css'>
 </head>
@@ -56,23 +57,29 @@
                     <!-- END MAIN MENU -->
 					{% if interface.show_social %}
                     <!-- SOCIAL ICONS -->
-                    <div class="social-icons hover-big pull-right">
+                    <div class="btn-group pull-right">
+						{% if organisation.email %}
+							<a class="btn btn-default" href="mailto:{{ organisation.email }}"><i class="fa fa-envelope fa-fw"></i></a>
+						{% endif %}
 						{% if organisation.facebook %}
-						<a href="{{ organisation.facebook }}" class="sicon-facebook"><i>Facebook</i></a>
+							<a class="btn btn-default" href="{{ organisation.facebook }}"><i class="fa fa-facebook fa-fw"></i></a>
 						{% endif %}
 						{% if organisation.twitter %}
-						<a href="{{ organisation.twitter }}" class="sicon-twitter"><i>Twitter</i></a>
+							<a class="btn btn-default" href="{{ organisation.twitter }}"><i class="fa fa-twitter fa-fw"></i></a>
 						{% endif %}
 						{% if organisation.linkedin %}
-						<a href="{{ organisation.linkedin }}" class="sicon-linkedin"><i>Linkedin</i></a>
+							<a class="btn btn-default" href="{{ organisation.linkedin }}"><i class="fa fa-linkedin fa-fw"></i></a>
 						{% endif %}
 						{% if organisation.youtube %}
-						<a href="{{ organisation.youtube }}" class="sicon-youtube"><i>Youtube</i></a>
+							<a class="btn btn-default" href="{{ organisation.youtube }}"><i class="fa fa-youtube fa-fw"></i></a>
 						{% endif %}
 						{% if organisation.pinterest %}
-						<a href="{{ organisation.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
+							<a class="btn btn-default" href="{{ organisation.pinterest }}"><i class="fa fa-pinterest fa-fw"></i></a>
 						{% endif %}
-                    </div>
+						{% if organisation.googleplus %}
+							<a class="btn btn-default" href="{{ organisation.googleplus }}"><i class="fa fa-google-plus fa-fw"></i></a>
+						{% endif %}
+					</div>
                     <!-- END SOCIAL ICONS -->
 					{% endif %}
                 </div>
@@ -120,29 +127,13 @@
 								{% endif %}
                             </ul>
                         </div>
+						<!-- Tag Line Welcome -->
 						<div class="container">{{ organisation.tagline }}</div>
-						{% if interface.show_social %}
-                        <div class="social-icons sicon-white bordered">
-							{% if organisation.facebook %}
-							<a href="{{ organisation.facebook }}" class="sicon-facebook"><i>Facebook</i></a>
-							{% endif %}
-							{% if organisation.twitter %}
-							<a href="{{ organisation.twitter }}" class="sicon-twitter"><i>Twitter</i></a>
-							{% endif %}
-							{% if organisation.linkedin %}
-							<a href="{{ organisation.linkedin }}" class="sicon-linkedin"><i>Linkedin</i></a>
-							{% endif %}
-							{% if organisation.youtube %}
-							<a href="{{ organisation.youtube }}" class="sicon-youtube"><i>Youtube</i></a>
-							{% endif %}
-							{% if organisation.pinterest %}
-							<a href="{{ organisation.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
-							{% endif %}
-                        </div>
-						{% endif %}
+						
                     </div>
                 </div>
             </div>
+			
         </div>
     </div>
     <!-- END PAGE | Welcome -->
@@ -185,26 +176,29 @@
 							{% endif %}
                             <!-- Team member details, activated on hover -->
                             <div class="about-overlay img-circle">
-                                <div class="social-icons sicon-white">
+								<div class="span" style="margin-top: 45%;">
 									{% if member.email %}
-									<a href="mailto:{{ member.email }}" class="sicon-mail"><i>Email</i></a>
+									<a href="mailto:{{ member.email }}" style="color:#ffffff"><i class="fa fa-envelope fa-fw"></i></a>
 									{% endif %}
 									{% if member.facebook %}
-									<a href="{{ member.facebook }}" class="sicon-facebook"><i>Facebook</i></a>
+									<a href="{{ member.facebook }}" style="color:#ffffff"><i class="fa fa-facebook fa-fw"></i></a>
 									{% endif %}
 									{% if member.twitter %}
-									<a href="{{ member.twitter }}" class="sicon-twitter"><i>Twitter</i></a>
+									<a href="{{ member.twitter }}" style="color:#ffffff"><i class="fa fa-twitter fa-fw"></i></a>
 									{% endif %}
 									{% if member.linkedin %}
-									<a href="{{ member.linkedin }}" class="sicon-linkedin"><i>Linkedin</i></a>
+									<a href="{{ member.linkedin }}" style="color:#ffffff"><i class="fa fa-linkedin fa-fw"></i></a>
 									{% endif %}
 									{% if member.youtube %}
-									<a href="{{ member.youtube }}" class="sicon-youtube"><i>Youtube</i></a>
+									<a href="{{ member.youtube }}" style="color:#ffffff"><i class="fa fa-youtube fa-fw"></i></a>
 									{% endif %}
 									{% if member.pinterest %}
-									<a href="{{ member.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
+									<a href="{{ member.pinterest }}" style="color:#ffffff"><i class="fa fa-pinterest fa-fw"></i></a>
 									{% endif %}
-                                </div>
+									{% if member.googleplus %}
+									<a href="{{ member.googleplus }}" style="color:#ffffff"><i class="fa fa-google-plus fa-fw"></i></a>
+									{% endif %}
+								</div>
                             </div>
                         </div>
                         
@@ -290,7 +284,7 @@
 					">
                     <a href="#project/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
                             <!-- Portfolio image -->
-                            <img src="{{ item.small_img }}" alt="{{ item.title }}">
+                            <img src="{{ item.small_img }}" alt="{{ item.title }}" style="display: block; margin: 0 auto;">
                             
                             <!-- Portfolio name, activated on hover -->
                             <div class="portfolio-overlay">
@@ -334,19 +328,8 @@
             <!-- Start Article -->
             <article>
                 <div class="row-fluid">
-                    <!-- Contact form -->
-                    <div class="span6">
-                        <h5>Drop Us A Line</h5>
-                        <form>
-                            <input type="text" class="span12" placeholder="Title" required="required">
-                            <input type="email" class="span12" placeholder="Email" required="required">
-                            <textarea rows="10" class="span12" required="required"></textarea>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                    <!-- End Contact form -->
                     <!-- Contact information -->
-                    <div class="span5 offset1">
+                    <div class="span4 offset4">
                         <h5>Meet Us</h5>
 						{% if organisation.phone %}
                         <div class="media">
@@ -391,23 +374,30 @@
                         <br/>
                         <br/>
                         <h5>Get social</h5>
-                        <div class="social-icons sicon-white bordered">
-							{% if organisation.facebook %}
-							<a href="{{ organisation.facebook }}" class="sicon-facebook"><i>Facebook</i></a>
-							{% endif %}
-							{% if organisation.twitter %}
-							<a href="{{ organisation.twitter }}" class="sicon-twitter"><i>Twitter</i></a>
-							{% endif %}
-							{% if organisation.linkedin %}
-							<a href="{{ organisation.linkedin }}" class="sicon-linkedin"><i>Linkedin</i></a>
-							{% endif %}
-							{% if organisation.youtube %}
-							<a href="{{ organisation.youtube }}" class="sicon-youtube"><i>Youtube</i></a>
-							{% endif %}
-							{% if organisation.pinterest %}
-							<a href="{{ organisation.pinterest }}" class="sicon-pinterest"><i>Pinterest</i></a>
-							{% endif %}
-                        </div>
+							<!-- Social Media -->
+							<div class="btn-group pull-left">
+								{% if organisation.email %}
+									<a class="btn btn-info" href="mailto:{{ organisation.email }}"><i class="fa fa-envelope fa-fw"></i></a>
+								{% endif %}
+								{% if organisation.facebook %}
+									<a class="btn btn-info" href="{{ organisation.facebook }}"><i class="fa fa-facebook fa-fw"></i></a>
+								{% endif %}
+								{% if organisation.twitter %}
+									<a class="btn btn-info" href="{{ organisation.twitter }}"><i class="fa fa-twitter fa-fw"></i></a>
+								{% endif %}
+								{% if organisation.linkedin %}
+									<a class="btn btn-info" href="{{ organisation.linkedin }}"><i class="fa fa-linkedin fa-fw"></i></a>
+								{% endif %}
+								{% if organisation.youtube %}
+									<a class="btn btn-info" href="{{ organisation.youtube }}"><i class="fa fa-youtube fa-fw"></i></a>
+								{% endif %}
+								{% if organisation.pinterest %}
+									<a class="btn btn-info" href="{{ organisation.pinterest }}"><i class="fa fa-pinterest fa-fw"></i></a>
+								{% endif %}
+								{% if organisation.googleplus %}
+									<a class="btn btn-info" href="{{ organisation.googleplus }}"><i class="fa fa-google-plus fa-fw"></i></a>
+								{% endif %}
+							</div>
 						{% endif %}
                     </div>
                     <!-- End Contact information -->
