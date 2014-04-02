@@ -176,28 +176,30 @@
 							{% endif %}
                             <!-- Team member details, activated on hover -->
                             <div class="about-overlay img-circle">
-								<div class="span" style="margin-top: 45%;">
+								<div class="span" style="width:100%; margin:auto; margin-top: 45%;">
+									<p align="centre">
 									{% if member.email %}
-									<a href="mailto:{{ member.email }}" style="color:#ffffff"><i class="fa fa-envelope fa-fw"></i></a>
+									<a href="mailto:{{ member.email }}" target="_blank" style="color:#ffffff"><i class="fa fa-envelope "></i></a>
 									{% endif %}
 									{% if member.facebook %}
-									<a href="{{ member.facebook }}" style="color:#ffffff"><i class="fa fa-facebook fa-fw"></i></a>
+									<a href="{{ member.facebook }}" target="_blank" style="color:#ffffff"><i class="fa fa-facebook "></i></a>
 									{% endif %}
 									{% if member.twitter %}
-									<a href="{{ member.twitter }}" style="color:#ffffff"><i class="fa fa-twitter fa-fw"></i></a>
+									<a href="{{ member.twitter }}" target="_blank" style="color:#ffffff"><i class="fa fa-twitter "></i></a>
 									{% endif %}
 									{% if member.linkedin %}
-									<a href="{{ member.linkedin }}" style="color:#ffffff"><i class="fa fa-linkedin fa-fw"></i></a>
+									<a href="{{ member.linkedin }}" target="_blank" style="color:#ffffff"><i class="fa fa-linkedin"></i></a>
 									{% endif %}
 									{% if member.youtube %}
-									<a href="{{ member.youtube }}" style="color:#ffffff"><i class="fa fa-youtube fa-fw"></i></a>
+									<a href="{{ member.youtube }}" target="_blank" style="color:#ffffff"><i class="fa fa-youtube "></i></a>
 									{% endif %}
 									{% if member.pinterest %}
-									<a href="{{ member.pinterest }}" style="color:#ffffff"><i class="fa fa-pinterest fa-fw"></i></a>
+									<a href="{{ member.pinterest }}" target="_blank" style="color:#ffffff"><i class="fa fa-pinterest "></i></a>
 									{% endif %}
 									{% if member.googleplus %}
-									<a href="{{ member.googleplus }}" style="color:#ffffff"><i class="fa fa-google-plus fa-fw"></i></a>
+									<a href="{{ member.googleplus }}" target="_blank" style="color:#ffffff"><i class="fa fa-google-plus "></i></a>
 									{% endif %}
+									</p>
 								</div>
                             </div>
                         </div>
@@ -286,9 +288,8 @@
 						data-destination="portfolio-items" data-insert="before"
 						style='min-height: 220px;'>
                             <!-- Portfolio image -->
-                            <img src="{{ item.small_img }}" alt="{{ item.title }}" style="display: block; margin: 0 auto;">
-                            
-                            <!-- Portfolio name, activated on hover -->
+								<img src="{{ item.small_img }}" alt="{{ item.title }}">
+								<!-- Portfolio name, activated on hover -->
                             <div class="portfolio-overlay">
                                 <h4>{{ item.title }}</h4>
                             </div>
