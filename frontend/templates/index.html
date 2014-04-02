@@ -282,7 +282,9 @@
 						{% for m in item.members.all %} projmem{{ m.pk }} {% endfor %}
 					{% endif %}
 					">
-                    <a href="#project/{{ item.pk }}" data-destination="portfolio-items" data-insert="before">
+                    <a href="#project/{{ item.pk }}"
+						data-destination="portfolio-items" data-insert="before"
+						style='min-height: 220px;'>
                             <!-- Portfolio image -->
                             <img src="{{ item.small_img }}" alt="{{ item.title }}" style="display: block; margin: 0 auto;">
                             
