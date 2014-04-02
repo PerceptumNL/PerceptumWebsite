@@ -284,6 +284,7 @@
   color: #fff;
   overflow: hidden;
 }
+
 .page-about .about-items .item:hover .about-overlay {
   opacity: 0.95;
   filter: alpha(opacity=95);
@@ -329,6 +330,20 @@
 /*
 *   PAGE | TWITTER
 */
+.page-statement {
+	background-color: #bbbbbb;
+	position: relative;
+	padding-top: 30px;
+	padding-bottom: 60px;
+	display: block;
+}
+.page-statement h1 {
+  color:#292929;
+}
+.page-statement p {
+  color:#050505;
+}
+
 .page-twitter {
   position: relative;
   background: url(../images/pages/twitter/tw_bck.jpg) 50% 0 no-repeat fixed;
@@ -7399,7 +7414,7 @@ a.badge:focus {
     -moz-transition: none;
     -o-transition: none;
     transition: none;
-  }
+  }  
   #page-about .about-items .item {
     display: block;
   }
