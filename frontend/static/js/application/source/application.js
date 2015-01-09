@@ -56,7 +56,8 @@ $(document).ready(function(){
         filter: "",
         easing: "swing"
      });
-    
+
+
     /* 
     *  Paralax initialization.
     *  Exclude for mobile.
@@ -181,6 +182,50 @@ $(document).ready(function(){
         interval: 7000,
         pause: "hover"
     });
+
+    /**
+    * Resize members based on largest member element
+    * Note: very naive, leaves too much whitespace, but 
+    * does not break on resize
+    */
+    $(window).load(function() {
+        var maxHeight = Math.max.apply(null, $('li.span4').map(function (){ return $(this).outerHeight(true);}).get());
+        $('li.span4').outerHeight(maxHeight);  
+    });
+
+    /**
+    * The following code could be used to deal with the whitespace issue;
+    * however it fails upon resize. This is a TODO for later.
+    */
+
+    /**
+    $(window).load(function() {
+        var allMembers = $('li.span4.center');
+        var amountMembers = allMembers.length;
+        var maxHeight = 0;
+        var rowCount = 0;
+        for(i=0; i<amountMembers; i++) {
+            rowCount++;
+            console.log(rowCount);
+            if(rowCount > 3) {
+                for(j=0; j<i; j++) {
+                    $(allMembers[j]).innerHeight(maxHeight);
+                    console.log("max"+ maxHeight);
+                }
+                maxHeight = 0;
+                rowCount = 0;
+            }
+            var currentRow = $(allMembers[i]).position().top;
+            console.log(currentRow);
+            console.log(allMembers[i])
+            var currentHeight = $(allMembers[i]).innerHeight();
+            console.log(currentHeight);
+            if(currentHeight > maxHeight) {
+                maxHeight = currentHeight
+                console.log(maxHeight);
+            }
+        }
+    });*/
 });
 
 
